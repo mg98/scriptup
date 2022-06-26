@@ -1,0 +1,22 @@
+version: "3.5"
+
+services:
+  postgres:
+    image: postgres:12
+    container_name: postgres
+    ports:
+      - "6631:5432"
+    #volumes:
+    #  - /var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=root
+      - POSTGRES_DB=scriptup
+  mysql:
+    image: mysql:8-oracle #arm64v8/mysql:oracle
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_DATABASE=scriptup
+      - MYSQL_ROOT_PASSWORD=123
+    ports:
+      - '6632:3306'
