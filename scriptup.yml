@@ -1,0 +1,22 @@
+dev:
+  dir: .test/migrations
+  executor: /bin/bash
+  dialect: postgres
+  host: localhost
+  port: 6631
+  user: root
+  pass: 123
+  sslmode: disable
+  db_name: scriptup
+  table: migrations
+prod:
+  dir: .test/migrations
+  executor: /bin/bash
+  dialect: postgres
+  host: prodhost
+  port: 6631
+  user: root
+  pass: 123
+  sslmode: disable
+  db_name: scriptup
+  table: migrations

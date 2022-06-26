@@ -1,0 +1,37 @@
+project_name: 'scriptup'
+
+builds:
+  - main: './main.go'
+    goos: ['linux', 'darwin', 'windows']
+    goarch: ['386', 'amd64', 'arm', 'arm64']
+    goarm: ['6', '7']
+    env:
+      - CGO_ENABLED=0
+
+changelog:
+  sort: 'asc'
+  filters:
+    exclude: ['^docs:', '^test:', 'Merge pull request', 'Merge branch']
+
+archives:
+  - format_overrides:
+      - goos: 'windows'
+        format: 'zip'
+    wrap_in_directory: true
+    files:
+      - README.md
+
+nfpms:
+  - homepage: 'https://github.com/mg98/scriptup'
+    description: 'Migration tool for shell script executions'
+    maintainer: 'Marcel Gregoriadis <m.gregoriadis@gmail.com>'
+    formats: ['deb', 'rpm']
+    dependencies: ['git']
+
+brews:
+  - tap:
+      owner: 'mg98'
+      name: 'homebrew-tap'
+    folder: 'Formula'
+    homepage: 'https://github.com/mg98/scriptup'
+    description: 'Migration tool for shell script executions'
